@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h3> Lista de usuários</h3>
+    <h3 class="align-content-center" style="position:center"> Lista de Usuários do Sistema</h3>
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceUsuarios" DataKeyNames="email" InsertItemPosition="LastItem">
     <AlternatingItemTemplate>
         <tr style="background-color: #FFF8DC;">
@@ -129,7 +129,7 @@
     DeleteCommand="DELETE FROM [usuario] WHERE [email] = @email" 
     InsertCommand="INSERT INTO [usuario] ([email], [nome], [senha]) VALUES (@email, @nome, @senha)" 
     SelectCommand="SELECT [email], [nome], [senha] FROM [usuario]" 
-    UpdateCommand="UPDATE [usuario] SET [nome] = @nome, [senha] = @senha WHERE [email] = @email">
+    UpdateCommand="UPDATE [usuario] SET [nome] = @nome, [senha] = @senha WHERE [email] = @email" OnDeleted="SqlDataSourceUsuarios_Deleted" OnDeleting="SqlDataSourceUsuarios_Deleting" OnInserted="SqlDataSourceUsuarios_Inserted" OnInserting="SqlDataSourceUsuarios_Inserting" OnUpdated="SqlDataSourceUsuarios_Updated" OnUpdating="SqlDataSourceUsuarios_Updating">
     <DeleteParameters>
         <asp:Parameter Name="email" Type="String" />
     </DeleteParameters>
@@ -144,4 +144,6 @@
         <asp:Parameter Name="email" Type="String" />
     </UpdateParameters>
 </asp:SqlDataSource>
+    <asp:Label ID="IMsg" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+    <br />
 </asp:Content>

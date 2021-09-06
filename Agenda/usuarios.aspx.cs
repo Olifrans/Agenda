@@ -13,5 +13,49 @@ namespace Agenda
         {
 
         }
+
+       
+        protected void SqlDataSourceUsuarios_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+           
+        }
+
+        protected void SqlDataSourceUsuarios_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                //IMsg.Text = e.Exception.Message;
+                IMsg.Text = "Erro, você esta inserindo um registro duplicado ou com campos em branco";
+                e.ExceptionHandled = true;
+            }
+        }
+
+
+        protected void SqlDataSourceUsuarios_Updating(object sender, SqlDataSourceCommandEventArgs e)
+        {
+
+        }
+
+        protected void SqlDataSourceUsuarios_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                //IMsg.Text = e.Exception.Message;
+                IMsg.Text = "Erro, você esta alterando um registro duplicado ou com campos em branco";
+                e.ExceptionHandled = true;
+            }
+        }
+
+
+        protected void SqlDataSourceUsuarios_Deleting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+
+        }
+
+        protected void SqlDataSourceUsuarios_Deleted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            
+        }
+
     }
 }
