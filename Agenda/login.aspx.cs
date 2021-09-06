@@ -39,7 +39,7 @@ namespace Agenda
             if (registro.HasRows)
             {
                 //Direcionar para a pagina inicial
-                lMsg.Text = "Parabéns deu certo!!!";
+                lMsg.Text = "Parabéns você esta logado no sistema!!!";
             }
             else
             {
