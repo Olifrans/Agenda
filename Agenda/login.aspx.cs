@@ -47,8 +47,7 @@ namespace Agenda
             }
             else
             {
-                Response.Write("<script> alert('O email ou a senha estão incorreto!!!');</ script >");
-
+                Response.Write("<script> alert('O e-mail ou a senha estão incorreto!!!');</script>");
                 //lMsg.Text = "Email ou senha esta incorreto!!!";
             }
         }
