@@ -18,26 +18,41 @@ namespace Agenda
 
         protected void btnInserir_Click(object sender, EventArgs e)
         {
-            //captura a string de conexão
-            System.Configuration.Configuration rootWebConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/MyWebSiteRoot");
-            System.Configuration.ConnectionStringSettings connString;
-            connString = rootWebConfig.ConnectionStrings.ConnectionStrings["ConnectionString"];
+            try
+            {
+                if (txbEmail.Text != "" && txbNome.Text != "" && txbTelefone.Text != "")
+                {
+                    //captura a string de conexão
+                    System.Configuration.Configuration rootWebConfig = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/MyWebSiteRoot");
+                    System.Configuration.ConnectionStringSettings connString;
+                    connString = rootWebConfig.ConnectionStrings.ConnectionStrings["ConnectionString"];
 
-            //cria um objeto de conexão
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = connString.ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+                    //cria um objeto de conexão
+                    SqlConnection con = new SqlConnection();
+                    con.ConnectionString = connString.ToString();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
 
-            cmd.CommandText = "Insert into Contato (nome,email,telefone) values (@nome,@email,@telefone)";
-            cmd.Parameters.AddWithValue("nome", txbTelefone.Text);
-            cmd.Parameters.AddWithValue("email", txbEmail.Text);
-            cmd.Parameters.AddWithValue("telefone", txbTelefone.Text);
+                    cmd.CommandText = "Insert into Contato (nome,email,telefone) values (@nome,@email,@telefone)";
+                    cmd.Parameters.AddWithValue("nome", txbTelefone.Text);
+                    cmd.Parameters.AddWithValue("email", txbEmail.Text);
+                    cmd.Parameters.AddWithValue("telefone", txbTelefone.Text);
 
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            GridView1.DataBind();
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    GridView1.DataBind();
+                }
+                else
+                {                    
+                    throw new Exception("Favor verificar se existem campos em branco!!!");     
+                }
+            }
+            catch (Exception erro)
+            {
+
+                Response.Write("<script> alert(' " + erro.Message +" ');</script>");
+            }            
         }
     }
 }

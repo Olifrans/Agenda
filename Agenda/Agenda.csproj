@@ -88,6 +88,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Imagens\agenda.jpg" />
     <Content Include="Imagens\agenda1.png" />
     <Content Include="Imagens\agenda2.jpg" />
