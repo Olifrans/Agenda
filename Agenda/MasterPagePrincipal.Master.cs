@@ -11,7 +11,13 @@ namespace Agenda
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Cookies["login"] == null)
+            {
+                Response.Redirect("~/login.aspx");
+            }           
         }
     }
 }
+
+
+

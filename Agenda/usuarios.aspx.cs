@@ -25,7 +25,9 @@ namespace Agenda
             if (e.Exception != null)
             {
                 //IMsg.Text = e.Exception.Message;
-                IMsg.Text = "Erro, você esta inserindo um registro duplicado ou com campos em branco";
+                //IMsg.Text = "Erro, você esta inserindo um registro duplicado ou com campos em branco";
+                Response.Write("<script> alert('Erro, você esta inserindo um registro duplicado ou com campos em branco!!!');</ script >");
+
                 e.ExceptionHandled = true;
             }
         }

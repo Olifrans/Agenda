@@ -38,12 +38,18 @@ namespace Agenda
             SqlDataReader registro = cmd.ExecuteReader();
             if (registro.HasRows)
             {
-                //Direcionar para a pagina inicial
-                lMsg.Text = "Parabéns você esta logado no sistema!!!";
+                //cookies
+                HttpCookie login = new HttpCookie("login", txbEmail.Text);
+                Response.Cookies.Add(login);
+               
+                //Dedirecionar para a pagina inicial
+                Response.Redirect("~/Index.aspx");
             }
             else
             {
-                lMsg.Text = "Email ou senha esta incorreto!!!";
+                Response.Write("<script> alert('O email ou a senha estão incorreto!!!');</ script >");
+
+                //lMsg.Text = "Email ou senha esta incorreto!!!";
             }
         }
     }
